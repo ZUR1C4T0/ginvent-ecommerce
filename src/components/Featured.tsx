@@ -1,8 +1,8 @@
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
-import Link from 'next/link'
 import { PropsWithChildren } from 'react'
+import { Button, ButtonLink } from './Button'
 
 export function Featured() {
     return (
@@ -22,16 +22,17 @@ export function Featured() {
                                 blanditiis, a harum non saepe totam corporis!
                             </p>
                             <div className="flex gap-3 mt-6">
-                                <Link
-                                    href={'#'}
-                                    className="py-1 px-4 rounded-md border border-solid border-white font-medium"
-                                >
+                                <ButtonLink href="#" color="white" outline>
                                     Leer más
-                                </Link>
-                                <button className="py-1 px-4 rounded-md cursor-pointer bg-indigo-600">
-                                    <FontAwesomeIcon icon={faCartShopping} />{' '}
-                                    Agregar al carrito
-                                </button>
+                                </ButtonLink>
+                                <Button color="white">
+                                    <FontAwesomeIcon
+                                        icon={faCartShopping}
+                                        height={16}
+                                        className="mr-2"
+                                    />
+                                    Agregar
+                                </Button>
                             </div>
                         </div>
                     </Column>
