@@ -1,4 +1,5 @@
-import { Product } from '@/context/cart.store'
+'use client'
+import { Product, useCart } from '@/context/cart.store'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
@@ -6,6 +7,8 @@ import Link from 'next/link'
 import { Button } from '../Button'
 
 export function ProductCard({ product }: { product: Product }) {
+    const addProduct = useCart((state) => state.addProduct)
+
     return (
         <div className="p-5">
             <Link
@@ -28,7 +31,7 @@ export function ProductCard({ product }: { product: Product }) {
                     <div className="text-right md:text-lg md:font-semibold md:text-left">
                         ${product.price}
                     </div>
-                    <Button outline>
+                    <Button outline onClick={() => addProduct(product)}>
                         <FontAwesomeIcon
                             icon={faCartShopping}
                             height={16}

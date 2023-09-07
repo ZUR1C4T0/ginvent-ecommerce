@@ -9,7 +9,7 @@ interface ButtonProps {
 }
 
 const fixedClasses =
-    'rounded-md cursor-pointer inline-flex items-center font-medium gap-1 border-solid'
+    'rounded-md cursor-pointer inline-flex items-center font-medium gap-1 border-solid justify-center'
 
 function getCustomClasses({ block, color, outline, size }: ButtonProps) {
     let customClasses = []
