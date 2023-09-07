@@ -35,10 +35,10 @@ const products = [
 
 export default function Home() {
     return (
-        <div className="bg-neutral-300 min-h-screen">
+        <>
             <Header />
             <Featured /> {/*product={featuredProduct}*/}
             <NewProducts products={products} />
-        </div>
+        </>
     )
 }
