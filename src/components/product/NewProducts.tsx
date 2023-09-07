@@ -1,4 +1,5 @@
-import { Product, ProductCard } from './ProductCard'
+import { Product } from '@/context/cart.store'
+import { ProductCard } from './ProductCard'
 
 export function NewProducts({ products }: { products: Product[] }) {
     return (

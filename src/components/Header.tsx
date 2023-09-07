@@ -1,4 +1,5 @@
 'use client'
+import { useCart } from '@/context/cart.store'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
@@ -7,6 +8,7 @@ import { NavLink } from './NavLink'
 
 export function Header() {
     const [navActive, setNavActive] = useState(false)
+    const count = useCart((state) => state.products.length)
 
     return (
         <header className="bg-background">
@@ -23,7 +25,7 @@ export function Header() {
                     <NavLink href={'/products'}>Productos</NavLink>
                     <NavLink href={'/categories'}>Categorias</NavLink>
                     <NavLink href={'/account'}>Cuenta</NavLink>
-                    <NavLink href={'/cart'}>Carrito {0}</NavLink>
+                    <NavLink href={'/cart'}>Carrito ( {count} )</NavLink>
                 </nav>
                 <button
                     className="bg-transparent aspect-square text-2xl text-white cursor-pointer relative z-10 md:hidden"

@@ -1,16 +1,9 @@
+import { Product } from '@/context/cart.store'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '../Button'
-
-export interface Product {
-    id: string
-    title: string
-    description: string
-    price: number
-    images: string[]
-}
 
 export function ProductCard({ product }: { product: Product }) {
     return (
