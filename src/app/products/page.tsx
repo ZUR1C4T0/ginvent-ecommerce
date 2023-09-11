@@ -1,44 +1,27 @@
 import { Header } from '@/components/Header'
+import { Title } from '@/components/Title'
 import { ProductCard } from '@/components/product/ProductCard'
 import { ProductsGrid } from '@/components/product/ProductsGrid'
+import { Product } from '@/context/cart.store'
 
-const products = [
-    {
-        id: 'f7e3e646-647d-4cb1-ac46-40836709c3e5',
-        title: 'Product 1',
-        description: 'Description 1',
-        price: 100,
-        images: ['https://placehold.co/100/png'],
-    },
-    {
-        id: 'f7e3e646-647d-4cb1-ac46-40836709c3e7',
-        title: 'Product 2',
-        description: 'Description 2',
-        price: 200,
-        images: ['https://placehold.co/100/png'],
-    },
-    {
-        id: 'f7e3e646-647d-4cb1-ac46-40836709c3e8',
-        title: 'Product 2',
-        description: 'Description 2',
-        price: 200,
-        images: ['https://placehold.co/100/png'],
-    },
-    {
-        id: 'f7e3e646-647d-4cb1-ac46-40836709c3e9',
-        title: 'Product 2',
-        description: 'Description 2',
-        price: 200,
-        images: ['https://placehold.co/100/png'],
-    },
-]
+async function getProducts(): Promise<Product[]> {
+    const res = await fetch(
+        'https://api.mockaroo.com/api/2cd20f00?count=20&key=b76d95a0',
+    )
 
-export default function Products() {
+    if (!res.ok) throw new Error('Error al obtener los productos')
+
+    return await res.json()
+}
+
+export default async function Products() {
+    const products = await getProducts()
+
     return (
         <>
             <Header />
             <div className="container">
-                <h1 className="text-2xl my-3">Todos los productos</h1>
+                <Title>Todos los productos</Title>
                 <ProductsGrid>
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />

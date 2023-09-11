@@ -1,10 +1,21 @@
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Product } from '@/context/cart.store'
 import Image from 'next/image'
 import { PropsWithChildren } from 'react'
-import { Button, ButtonLink } from './Button'
+import { AddProductButton } from './AddProductButton'
+import { ButtonLink } from './Button'
 
-export function Featured() {
+async function getBetterProduct() {
+    const res = await fetch(
+        'https://api.mockaroo.com/api/2cd20f00?count=20&key=b76d95a0',
+    )
+    const products = (await res.json()) as Product[]
+    const sortedProducts = products.sort((a, b) => a.rate - b.rate)
+    return sortedProducts[0]
+}
+
+export async function Featured() {
+    const featuredProduct = await getBetterProduct()
+
     return (
         <div className="bg-background text-white py-12">
             <div className="container px-5">
@@ -12,36 +23,29 @@ export function Featured() {
                     <Column>
                         <div>
                             <h1 className="text-2xl md:text-5xl mb-3">
-                                Product Title
+                                {featuredProduct.title}
                             </h1>
                             <p className="text-[#aaa] text-sm">
-                                Lorem ipsum dolor sit, amet consectetur
-                                adipisicing elit. Voluptates cum porro vel
-                                provident suscipit maxime deleniti obcaecati
-                                vero pariatur accusantium eaque minus minima
-                                blanditiis, a harum non saepe totam corporis!
+                                {featuredProduct.description}
                             </p>
                             <div className="flex gap-3 mt-6">
-                                <ButtonLink href="#" color="white" outline>
+                                <ButtonLink
+                                    href={`product/${featuredProduct.id}`}
+                                    color="white"
+                                    outline
+                                >
                                     Leer más
                                 </ButtonLink>
-                                <Button color="white">
-                                    <FontAwesomeIcon
-                                        icon={faCartShopping}
-                                        height={16}
-                                        className="mr-2"
-                                    />
-                                    Agregar
-                                </Button>
+                                <AddProductButton product={featuredProduct} />
                             </div>
                         </div>
                     </Column>
                     <Column>
                         <Image
-                            className="w-full object-contain"
+                            className="w-full max-h-60 object-contain"
                             width={2400}
                             height={1332}
-                            src="/img/mac_book.png"
+                            src={featuredProduct.images[0]}
                             alt="mac book"
                         />
                     </Column>

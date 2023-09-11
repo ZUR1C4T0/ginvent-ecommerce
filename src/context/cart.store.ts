@@ -6,6 +6,8 @@ export interface Product {
     description: string
     price: number
     images: string[]
+    rate: number
+    createdAt: string
 }
 
 interface ProductCuantity {
@@ -14,7 +16,7 @@ interface ProductCuantity {
 
 interface CartStore {
     products: (Product & ProductCuantity)[]
-    addProduct: (product: Product, cuantity: number) => void
+    addProduct: (product: Product, cuantity?: number) => void
     removeProduct: (product: Product) => void
     clearCart: () => void
     increace: (id: Product['id']) => void

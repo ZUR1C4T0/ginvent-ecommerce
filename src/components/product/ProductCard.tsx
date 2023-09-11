@@ -10,17 +10,17 @@ export function ProductCard({ product }: { product: Product }) {
     const addProduct = useCart((state) => state.addProduct)
 
     return (
-        <div className="p-5">
+        <div className="m-3">
             <Link
                 href={`/product/${product.id}`}
-                className="bg-white text-center flex justify-center items-center rounded-lg"
+                className="bg-white p-5 text-center flex justify-center items-center rounded-xl"
             >
                 <Image
-                    height={100}
-                    width={100}
+                    height={480}
+                    width={480}
                     alt={product.title}
                     src={product.images[0]}
-                    className="w-full max-h-20 object-cover"
+                    className="w-full max-h-[100px] object-contain"
                 />
             </Link>
             <div className="mt-2">
