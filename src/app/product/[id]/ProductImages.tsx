@@ -16,7 +16,7 @@ export function ProductImages({ images }: { images: string[] }) {
                     height={720}
                 />
             </div>
-            <div className="flex gap-3 grow-0 mt-3">
+            <div className="flex gap-3 grow-0 mt-3 ">
                 {images.map((image, i) => (
                     <div
                         key={i}
@@ -27,7 +27,7 @@ export function ProductImages({ images }: { images: string[] }) {
                             className="max-w-full max-h-full object-contain"
                             src={image}
                             alt={image}
-                            width={720}
+                            width={720 / images.length}
                             height={720}
                         />
                     </div>

@@ -46,7 +46,7 @@ export async function Featured() {
                             width={2400}
                             height={1332}
                             src={featuredProduct.images[0]}
-                            alt="mac book"
+                            alt={featuredProduct.title}
                         />
                     </Column>
                 </div>
