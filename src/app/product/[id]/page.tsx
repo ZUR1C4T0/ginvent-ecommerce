@@ -19,7 +19,7 @@ export default async function Product({ params }: { params: { id: string } }) {
     return (
         <>
             <Header />
-            <div className="container grid grid-cols-1 md:grid-cols-[0.8fr,1.2fr] gap-10 my-10">
+            <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[0.8fr,1.2fr] gap-10 my-10">
                 <ProductImages images={product!.images} />
 
                 <div>

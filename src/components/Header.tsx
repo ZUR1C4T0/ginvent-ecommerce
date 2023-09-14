@@ -19,7 +19,7 @@ export function Header() {
                 <nav
                     className={`${
                         navActive ? 'block' : 'hidden'
-                    } gap-4 fixed top-0 bottom-0 left-0 right-0 pt-16 px-5 pb-5 bg-background md:flex md:static md:p-0`}
+                    } gap-4 z-10 fixed top-0 bottom-0 left-0 right-0 pt-16 px-5 pb-5 bg-background md:flex md:static md:p-0`}
                 >
                     <NavLink href={'/'}>Inicio</NavLink>
                     <NavLink href={'/products'}>Productos</NavLink>
