@@ -2,7 +2,6 @@ import { AddProductButton } from '@/components/AddProductButton'
 import { Header } from '@/components/Header'
 import { Title } from '@/components/Title'
 import { Product } from '@/context/cart.store'
-import Image from 'next/image'
 import { ProductImages } from './ProductImages'
 
 async function getProductById(id: string) {

@@ -6,7 +6,7 @@ interface ProductRowProps {
 }
 
 export function ProductRow({ product }: ProductRowProps) {
-    const { products, increace, decreace } = useCart()
+    const { products, increace, decreace, removeProduct } = useCart()
     const cuantity = products.find((p) => p.id === product.id)?.cuantity ?? 0
 
     return (
@@ -27,7 +27,11 @@ export function ProductRow({ product }: ProductRowProps) {
                 <div className="flex items-center gap-1 sm:gap-3">
                     <button
                         className="px-2 rounded-md bg-neutral-300 aspect-square"
-                        onClick={() => cuantity > 0 && decreace(product.id)}
+                        onClick={() =>
+                            cuantity > 1
+                                ? decreace(product.id)
+                                : removeProduct(product)
+                        }
                     >
                         -
                     </button>

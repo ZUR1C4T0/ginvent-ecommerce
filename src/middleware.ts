@@ -7,7 +7,7 @@ export const config = {
 
 export async function middleware(request: NextRequest) {
     const token = request.cookies.get('token')?.value
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET)
+    const secret = new TextEncoder().encode(atob("" + process.env.JWT_SECRET))
 
     if (!token) {
         return NextResponse.redirect(new URL('/login', request.url))
@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
         const payload = await jwtVerify(token, secret)
         console.log(payload.payload)
     } catch (error) {
-        request.cookies.delete('token')
+        console.error(error)
         return NextResponse.redirect(new URL('/login', request.url))
     }
 

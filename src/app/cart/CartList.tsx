@@ -1,10 +1,11 @@
 'use client'
+import { Button } from '@/components/Button'
 import { ProductRow } from '@/components/product/ProductRow'
 import { useCart } from '@/context/cart.store'
 import { CartCard } from './CartCard'
 
 export function CartList() {
-    const { products } = useCart()
+    const { products, total, clearCart } = useCart()
 
     return (
         <CartCard
@@ -28,6 +29,18 @@ export function CartList() {
                         {products.map((product) => (
                             <ProductRow key={product.id} product={product} />
                         ))}
+                        <tr>
+                            <td>
+                                <Button
+                                    color="black"
+                                    onClick={() => clearCart()}
+                                >
+                                    Limpiar carrito
+                                </Button>
+                            </td>
+                            <td className="text-2xl uppercase">Total</td>
+                            <td className="text-2xl font-bold">$ {total()}</td>
+                        </tr>
                     </tbody>
                 </table>
             )}

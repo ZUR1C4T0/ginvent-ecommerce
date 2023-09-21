@@ -15,7 +15,8 @@ interface ProductCuantity {
 }
 
 interface CartStore {
-    products: (Product & ProductCuantity)[]
+    products: (Product & ProductCuantity)[],
+    total: () => number
     addProduct: (product: Product, cuantity?: number) => void
     removeProduct: (product: Product) => void
     clearCart: () => void
@@ -23,8 +24,16 @@ interface CartStore {
     decreace: (id: Product['id']) => void
 }
 
-export const useCart = create<CartStore>((set) => ({
+export const useCart = create<CartStore>((set, get) => ({
     products: [],
+    total: ()=>{
+        if(!get()) return 0
+        let total = 0
+        for (const product of get().products) {
+            total += product.price * product.cuantity
+        }
+        return total
+    },
     addProduct: (product, cuantity = 1) =>
         set((state) => {
             const index = state.products.findIndex((p) => p.id === product.id)

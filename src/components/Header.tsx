@@ -23,7 +23,6 @@ export function Header() {
                 >
                     <NavLink href={'/'}>Inicio</NavLink>
                     <NavLink href={'/products'}>Productos</NavLink>
-                    <NavLink href={'/categories'}>Categorias</NavLink>
                     <NavLink href={'/account'}>Cuenta</NavLink>
                     <NavLink href={'/cart'}>Carrito ( {count} )</NavLink>
                 </nav>

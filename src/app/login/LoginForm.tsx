@@ -47,7 +47,8 @@ export default function LoginForm() {
                 body: JSON.stringify(loginCredentials),
             })
                 .then((response) => response.ok && response.json())
-                .then(console.log)
+                .then(({ token }) => setToken(token))
+                .then(() => router.push('/'))
         } else {
             const { confirmPassword, ...credentials } = registerCredentials
             if (registerCredentials.password !== confirmPassword) {
@@ -62,10 +63,8 @@ export default function LoginForm() {
                 body: JSON.stringify(credentials),
             })
                 .then((response) => response.ok && response.json())
-                .then(({ token }) => {
-                    setToken(token)
-                    router.push('/')
-                })
+                .then(({ token }) => setToken(token))
+                .then(() => router.push('/'))
         }
     }
 
